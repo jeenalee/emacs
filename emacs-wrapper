@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
 
+# Find socketfile location
 socketfile="/tmp/emacs$(id -u)/server"
-#socketfile=$(lsof -c Emacs | grep server | tr -s " " | cut -d' ' -f8)
+# other ways to find socketfile:
+#   socketfile=$(lsof -c Emacs | grep server | tr -s " " | cut -d' ' -f8)
 
 if [ ! -e "$socketfile" ]; then
     /usr/local/Cellar/emacs/24.5/bin/emacs &
 else
     /usr/local/Cellar/emacs/24.5/bin/emacsclient -s "$socketfile" $@
 fi
+
+# This is a messy set of symlinks, but it works...
+# /usr/bin/emacsclient -> /Users/Jeena/bin/emacsclient
+# /Users/Jeena/bin/emacs -> /Users/Jeena/.emacs.d/emacs-wrapper
+# /Users/Jeena/.emacs.d -> /Users/Jeena/src/prelude
