@@ -9,6 +9,8 @@
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
-;; GIANT HACK
+;; GIANT HACK: Emacs tries to build a function that doesn't exist,
+;; called `tramp-tramp-file-p`
+;; This hack creates that function, and set it to return `nil`.
 (defun tramp-tramp-file-p (filename)
   nil)
