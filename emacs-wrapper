@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+socketfile="/tmp/emacs$(id -u)/server"
+#socketfile=$(lsof -c Emacs | grep server | tr -s " " | cut -d' ' -f8)
+
+if [ ! -e "$socketfile" ]; then
+    /usr/local/Cellar/emacs/24.5/bin/emacs &
+else
+    /usr/local/Cellar/emacs/24.5/bin/emacsclient -s "$socketfile" $@
+fi
