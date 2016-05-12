@@ -15,3 +15,7 @@ fi
 # /usr/bin/emacsclient -> /Users/Jeena/bin/emacsclient
 # /Users/Jeena/bin/emacs -> /Users/Jeena/.emacs.d/emacs-wrapper
 # /Users/Jeena/.emacs.d -> /Users/Jeena/src/prelude
+
+# Also, after compiling emacs, it throws an error:
+#   1. Try deleting all elpa dependencies.
+#   2. Download them again, and re-compile.
